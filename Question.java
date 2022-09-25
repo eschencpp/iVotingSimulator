@@ -1,24 +1,13 @@
 /**
  * Question
  */
-public class Question {
+public interface Question {
 
-    private String question;
-    private String answer;
+    String getQuestion();
 
-        String getQuestion(){
-        return question;
-    }
+    String getAnswer();
 
-    String getAnswer(){
-        return answer;
-    }
+    void setQuestion(String q);
 
-    void setQuestion(String q){
-        question = q;
-    }
-
-    void setAnswer(String a){
-        question = a;
-    }
+    void setAnswer(String a);
 }
