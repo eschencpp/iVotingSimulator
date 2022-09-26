@@ -1,30 +1,20 @@
-public class multipleChoice implements Question {
+public class multipleChoice extends Question {
 
-    private String question;
-    private String answer;
-
-    @Override
-    public String getQuestion() {
-        // TODO Auto-generated method stub
-        return this.question;
-    }
-
-    @Override
-    public String getAnswer() {
-        // TODO Auto-generated method stub
-        return this.answer;
-    }
-
-    @Override
-    public void setQuestion(String q) {
-        this.question = q;
-        
-    }
-
-    @Override
-    public void setAnswer(String a) {
-        this.answer = a;
-        
-    }
+    char answerBank[] = new char[]{ 'a','b','c','d','e','f','g','h','i'};
     
+
+
+    //Take in parameter for the number of choices. Ex 4 would fill tempArr with a b c d and set answerBank to tempArr at the end
+    public void setAnswerBank(int numOfChoices){
+        char tempArr[] = new char[numOfChoices];
+        for(int i = 0; i < numOfChoices; i++){
+            tempArr[i] = answerBank[i];
+        }
+
+        answerBank = tempArr;
+    }
+
+    public char[] getAnswerBank(){
+        return answerBank;
+    }
 }

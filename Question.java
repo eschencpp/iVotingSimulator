@@ -1,13 +1,31 @@
 /**
  * Question
  */
-public interface Question {
+abstract class Question {
 
-    String getQuestion();
+    String question;
+    String answer;
 
-    String getAnswer();
+    
+    public String getQuestion() {
+        // TODO Auto-generated method stub
+        return this.question;
+    }
 
-    void setQuestion(String q);
+    
+    public String getAnswer() {
+        // TODO Auto-generated method stub
+        return this.answer;
+    }
 
-    void setAnswer(String a);
+    
+    public void setQuestion(String q) {
+        this.question = q;
+        
+    }
+
+    public void setAnswer(String a) {
+        this.answer = a;
+        
+    }
 }
