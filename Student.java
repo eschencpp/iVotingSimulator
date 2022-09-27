@@ -27,8 +27,13 @@ public class Student {
      * @return void
      */
     public void setAnswer(char[] answerBank, int numOfSelectedAns){
+        //If answer[] not empty then clear it. Ensures that each Student only has one answer submission
+        if(!answer.isEmpty()){
+            answer.clear();
+        }
+
+        //Choose an random answers from the answer bank
         while(answer.size() < numOfSelectedAns){
-            //Choose an answer from the answer bank
             String temp = String.valueOf(answerBank[rand.nextInt(numOfSelectedAns)]);
             //Ensure that each answer chosen is unique until numOfSelectedAns is reached
             if(!answer.contains(temp)){
