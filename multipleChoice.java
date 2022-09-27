@@ -1,12 +1,12 @@
 public class multipleChoice extends Question {
 
-    char answerBank[] = new char[]{ 'a','b','c','d','e','f','g','h','i'};
+    String answerBank[] = new String[]{ "A","B","C","D","E","F","G","H","I"};
     
 
 
     //Take in parameter for the number of choices. Ex 4 would fill tempArr with a b c d and set answerBank to tempArr at the end
     public void setAnswerBank(int numOfChoices){
-        char tempArr[] = new char[numOfChoices];
+        String tempArr[] = new String[numOfChoices];
         for(int i = 0; i < numOfChoices; i++){
             tempArr[i] = answerBank[i];
         }
@@ -14,7 +14,7 @@ public class multipleChoice extends Question {
         answerBank = tempArr;
     }
 
-    public char[] getAnswerBank(){
+    public String[] getAnswerBank(){
         return answerBank;
     }
 }

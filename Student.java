@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.UUID;  
 
 public class Student {
     
-    private static final AtomicInteger idGenerator = new AtomicInteger(1000);
-    private int UUID = idGenerator.getAndIncrement();
+    
+    String UID = UUID.randomUUID().toString();
     ArrayList<String> answer = new ArrayList<String>();
     Random rand = new Random();
 
     
     public Student(){
-        this.UUID = idGenerator.getAndIncrement();
+
     }
 
     public ArrayList<String> getAnswer(){
@@ -26,9 +26,14 @@ public class Student {
      * @param numOfSelectedAns - the number of answers that the student selects
      * @return void
      */
-    public void setAnswer(char[] answerBank, int numOfSelectedAns){
+    public void setAnswer(String[] answerBank, int numOfSelectedAns){
+        //If answer[] not empty then clear it. Ensures that each Student only has one answer submission
+        if(!answer.isEmpty()){
+            answer.clear();
+        }
+
+        //Choose an random answers from the answer bank
         while(answer.size() < numOfSelectedAns){
-            //Choose an answer from the answer bank
             String temp = String.valueOf(answerBank[rand.nextInt(numOfSelectedAns)]);
             //Ensure that each answer chosen is unique until numOfSelectedAns is reached
             if(!answer.contains(temp)){
@@ -37,7 +42,7 @@ public class Student {
         }
     }
 
-    public int getUID(){
-        return UUID;
+    public String getUID(){
+        return UID;
     }
 }
