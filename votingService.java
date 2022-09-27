@@ -4,17 +4,19 @@ import java.util.Map;
 
 
 public class votingService {
-    
-    public void vote(){
-        
+    static ArrayList<String> totalAnswers = new ArrayList<>();
+
+    public void vote(Student student, String[] answerBank, int randNum){
+        student.setAnswer(answerBank, randNum);
+        totalAnswers.addAll(student.getAnswer());
     }
 
-    public static void displayAnswers(ArrayList<String> ans)
+    public static void displayAnswers()
     {
         // hashmap to store the frequency of element
         Map<String, Integer> hm = new HashMap<String, Integer>();
         
-        for (String i : ans) {
+        for (String i : totalAnswers) {
             Integer j = hm.get(i);
             hm.put(i, (j == null) ? 1 : j + 1);
         }
