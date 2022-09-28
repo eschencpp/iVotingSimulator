@@ -4,7 +4,6 @@ import java.util.Random;
 public class SimulatorDriver {
      public static void main(String[] args) {
           //Initialize objects
-          Random rand = new Random();
           votingService vService = new votingService();
           multipleChoice mc1 = new multipleChoice();
 
@@ -33,6 +32,24 @@ public class SimulatorDriver {
           //Output the results
           vService.displayAnswers();
           
+          vService.reset(studentArr);
+
+          //Single Answer Questions
+          singleAnswer sa1 = new singleAnswer();
+          String[] sa1answerBank = {"A","B","C","D","E","F","G"};
+          sa1.setAnswerBank(sa1answerBank);
+
+          //Generate random answers for Students
+          for(int i = 0; i < studentArr.size(); i++){
+               vService.vote(studentArr.get(i), sa1, generateRandomAns(sa1.getAnswerBank()));
+               System.out.println(studentArr.get(i).getUID() + "\n" + studentArr.get(i).getAnswer());
+          }
+
+          //Output the results
+          vService.displayAnswers();
+          
+          vService.reset(studentArr);
+
 
 
 
@@ -41,7 +58,7 @@ public class SimulatorDriver {
      private static ArrayList<String> generateRandomAns(ArrayList<String> ansBank){
           Random rand = new Random();
           ArrayList<String> randomAns = new ArrayList<String>();
-          int numOfSelectedAns = (rand.nextInt(ansBank.size() + 1));
+          int numOfSelectedAns = (1 + rand.nextInt(ansBank.size()));
           while(randomAns.size() < numOfSelectedAns){
                String temp = ansBank.get(rand.nextInt(numOfSelectedAns));
                //Ensure that each answer chosen is unique until numOfSelectedAns is reached
