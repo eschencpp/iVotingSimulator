@@ -6,10 +6,20 @@ import java.util.Map;
 public class votingService {
     static ArrayList<String> totalAnswers = new ArrayList<>();
 
-    public void vote(Student student, String[] answerBank, int randNum){
-        student.setAnswer(answerBank, randNum);
+    public void vote(Student student, multipleChoice q, ArrayList<String> answer){
+        //Check if student has previously submitted answer
+        if(!student.getAnswer().isEmpty()){
+            student.getAnswer().clear();
+        }
+        student.setAnswer(answer);
         totalAnswers.addAll(student.getAnswer());
     }
+
+    public void vote(Student student, singleAnswer q, ArrayList<String> answer){
+        student.setAnswer(answer);
+        totalAnswers.addAll(student.getAnswer());
+    }
+
 
     public static void displayAnswers()
     {

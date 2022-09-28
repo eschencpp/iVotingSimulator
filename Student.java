@@ -6,7 +6,7 @@ public class Student {
     
     
     String UID = UUID.randomUUID().toString();
-    ArrayList<String> answer = new ArrayList<String>();
+    ArrayList<String> stuAnswer = new ArrayList<String>();
     Random rand = new Random();
 
     
@@ -15,7 +15,7 @@ public class Student {
     }
 
     public ArrayList<String> getAnswer(){
-        return answer;
+        return stuAnswer;
     }
 
 
@@ -26,20 +26,9 @@ public class Student {
      * @param numOfSelectedAns - the number of answers that the student selects
      * @return void
      */
-    public void setAnswer(String[] answerBank, int numOfSelectedAns){
-        //If answer[] not empty then clear it. Ensures that each Student only has one answer submission
-        if(!answer.isEmpty()){
-            answer.clear();
-        }
+    public void setAnswer(ArrayList<String> answer){
+        stuAnswer = answer;
 
-        //Choose an random answers from the answer bank
-        while(answer.size() < numOfSelectedAns){
-            String temp = String.valueOf(answerBank[rand.nextInt(numOfSelectedAns)]);
-            //Ensure that each answer chosen is unique until numOfSelectedAns is reached
-            if(!answer.contains(temp)){
-                answer.add(temp);
-            }
-        }
     }
 
     public String getUID(){

@@ -1,10 +1,11 @@
-/**
- * Question
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+
 abstract class Question {
 
-    String question;
-    String answer;
+    protected String question;
+    protected String answerKey;
+    protected ArrayList<String> answerBank = new ArrayList<String>();
 
     
     public String getQuestion() {
@@ -13,9 +14,9 @@ abstract class Question {
     }
 
     
-    public String getAnswer() {
+    public String getAnswerKey() {
         // TODO Auto-generated method stub
-        return this.answer;
+        return this.answerKey;
     }
 
     
@@ -25,7 +26,14 @@ abstract class Question {
     }
 
     public void setAnswer(String a) {
-        this.answer = a;
-        
+        this.answerKey = a;
+    }
+
+    public void setAnswerBank(String[] choices){
+        this.answerBank.addAll(Arrays.asList(choices));
+    }
+
+    public ArrayList<String> getAnswerBank(){
+        return answerBank;
     }
 }
