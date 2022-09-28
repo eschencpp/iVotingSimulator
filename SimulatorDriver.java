@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.Random;
+
 public class SimulatorDriver {
      public static void main(String[] args) {
+          //Initialize objects
           Random rand = new Random();
           votingService vService = new votingService();
           multipleChoice mc1 = new multipleChoice();
-          mc1.setAnswerBank(4);
+
+          //Set answer bank for Q1
+          String[] mc1answerBank = {"1","2","3","4"};
+          mc1.setAnswerBank(mc1answerBank);
 
 
           //Print Question Prompt
@@ -21,7 +26,7 @@ public class SimulatorDriver {
 
           //Generate random answers for Students
           for(int i = 0; i < studentArr.size(); i++){
-               vService.vote(studentArr.get(i), mc1.getAnswerBank(), (rand.nextInt(mc1.getAnswerBank().length) + 1));
+               vService.vote(studentArr.get(i), mc1, generateRandomAns(mc1.getAnswerBank()));
                System.out.println(studentArr.get(i).getUID() + "\n" + studentArr.get(i).getAnswer());
           }
 
@@ -31,5 +36,19 @@ public class SimulatorDriver {
 
 
 
+     }
+
+     private static ArrayList<String> generateRandomAns(ArrayList<String> ansBank){
+          Random rand = new Random();
+          ArrayList<String> randomAns = new ArrayList<String>();
+          int numOfSelectedAns = (rand.nextInt(ansBank.size() + 1));
+          while(randomAns.size() < numOfSelectedAns){
+               String temp = ansBank.get(rand.nextInt(numOfSelectedAns));
+               //Ensure that each answer chosen is unique until numOfSelectedAns is reached
+               if(!randomAns.contains(temp)){
+                    randomAns.add(temp);
+               }
+           }
+          return randomAns;
      }
 }
