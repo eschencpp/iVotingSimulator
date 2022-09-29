@@ -1,4 +1,7 @@
-import java.sql.Time;
+/* Eric Chen
+ * CS3560 Project 1
+ * 09/29/2022
+ */ 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -9,7 +12,7 @@ public class SimulatorDriver {
           votingService vService = new votingService();
           System.out.println("Welcome to IVoteService");
 
-          //Create 6 students
+          //Create 10 students
           ArrayList<Student> studentArr = new ArrayList<Student>();
           while(studentArr.size() < 10){
                studentArr.add(new Student());
@@ -73,7 +76,11 @@ public class SimulatorDriver {
 
      }
 
-     //Generate random answers for students
+     /**
+     * Generate random answers for students
+     * @param  ansBank the answer choices that can be randomly selected
+     * @return an ArrayList of the selected answers
+     */
      private static ArrayList<String> generateRandomAns(ArrayList<String> ansBank){
           Random rand = new Random();
           ArrayList<String> randomAns = new ArrayList<String>();

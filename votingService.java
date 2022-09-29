@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 public class votingService {
-    static ArrayList<String> totalAnswers = new ArrayList<String>();
+    private static ArrayList<String> totalAnswers = new ArrayList<String>();
 
     /**
     * Method to vote for multiple choice questions

@@ -9,13 +9,11 @@ abstract class Question {
 
     
     public String getQuestion() {
-        // TODO Auto-generated method stub
         return this.question;
     }
 
     
     public ArrayList<String> getAnswerKey() {
-        // TODO Auto-generated method stub
         return this.answerKey;
     }
 
