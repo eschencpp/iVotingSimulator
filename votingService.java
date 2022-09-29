@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,6 +7,9 @@ import java.util.Map;
 public class votingService {
     static ArrayList<String> totalAnswers = new ArrayList<String>();
 
+    /**
+    * Method to vote for multiple choice questions
+    */
     public void vote(Student student, multipleChoice q, ArrayList<String> answer){
         //Check if student has previously submitted answer
         if(!student.getAnswer().isEmpty()){
@@ -15,7 +19,11 @@ public class votingService {
         totalAnswers.addAll(student.getAnswer());
     }
 
+    /**
+    * Method to vote for single answer questions.
+    */
     public void vote(Student student, singleAnswer q, ArrayList<String> answer){
+        //Ensure multiple answers are not chosen
         if(answer.size() > 1){
             String singleAns = answer.get(answer.size() - 1);
             student.getAnswer().add(singleAns);
@@ -40,6 +48,21 @@ public class votingService {
         for (Map.Entry<String, Integer> val : hm.entrySet()) {
             System.out.println(val.getKey() +" : " + val.getValue());
         }
+    }
+
+    public static int gradeAnswers(ArrayList<Student> students, Question q){
+        int totalCorrect = 0;
+        ArrayList<String> studentAns;
+        ArrayList<String> ansKey = q.getAnswerKey();
+        for(int i = 0; i < students.size(); i++){
+            studentAns = students.get(i).getAnswer();
+            Collections.sort(studentAns);
+            Collections.sort(ansKey);
+            if(studentAns.equals(ansKey)){
+                totalCorrect++;
+            } 
+        }
+        return totalCorrect;
     }
 
     public static void reset(ArrayList<Student> students){
