@@ -4,7 +4,7 @@ import java.util.Arrays;
 abstract class Question {
 
     protected String question;
-    protected String answerKey;
+    protected ArrayList<String> answerKey;
     protected ArrayList<String> answerBank = new ArrayList<String>();
 
     
@@ -14,7 +14,7 @@ abstract class Question {
     }
 
     
-    public String getAnswerKey() {
+    public ArrayList<String> getAnswerKey() {
         // TODO Auto-generated method stub
         return this.answerKey;
     }
@@ -25,11 +25,7 @@ abstract class Question {
         
     }
 
-    public void setAnswer(String a) {
-        this.answerKey = a;
-    }
-
-    public void setAnswerBank(String[] choices){
+        public void setAnswerBank(String[] choices){
         this.answerBank.addAll(Arrays.asList(choices));
     }
 

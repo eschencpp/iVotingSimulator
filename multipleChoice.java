@@ -1,8 +1,10 @@
-
+import java.util.ArrayList;
 
 public class multipleChoice extends Question {
-
-    //String choices[] = { "A","B","C","D","E","F","G","H","I"};
+    
+    public void setAnswer(ArrayList<String> ansKey) {
+        this.answerKey = ansKey;
+    }
     
 
 
